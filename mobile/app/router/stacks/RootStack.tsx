@@ -1,10 +1,10 @@
-import LoginScreen from "@/screens/Auth/LoginScreen"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 
+import AuthStack, { AuthStackParamList } from "./Auth/HomeStack"
 import HomeStack, { HomeStackParamList } from "./Home/HomeStack"
 
 export type RootStackParamList = {
-  AuthStack: undefined
+  AuthStack: AuthStackParamList
   HomeStack: HomeStackParamList
   RestaurantPanelStack: undefined
 }
@@ -19,7 +19,7 @@ const RootStackNavigator = () => {
         headerShown: false,
       }}
     >
-      <RootStack.Screen name="AuthStack" component={LoginScreen} />
+      <RootStack.Screen name="AuthStack" component={AuthStack} />
       <RootStack.Screen name="HomeStack" component={HomeStack} />
     </RootStack.Navigator>
   )
