@@ -1,6 +1,8 @@
-import HomeScreen from "@/screens/HomeScreen"
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import React from "react"
+
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
+
+import HomeScreen from "@/screens/Home/HomeScreen"
 
 export type HomeStackParamList = {
   Home: undefined

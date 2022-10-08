@@ -10,6 +10,7 @@ module.exports = function (api) {
             "@/components": "./app/components",
             "@/screens": "./app/screens",
             "@/router": "./app/router",
+            "@/theme": "./app/theme",
             "@/firebase": "./app/firebase/index",
           },
           extensions: [".js", ".jsx", ".ts", ".tsx"],
