@@ -12,6 +12,7 @@ module.exports = function (api) {
             "@/router": "./app/router",
             "@/theme": "./app/theme",
             "@/firebase": "./app/firebase/index",
+            "@/assets": "./assets",
           },
           extensions: [".js", ".jsx", ".ts", ".tsx"],
         },
