@@ -78,9 +78,31 @@ export const PasswordInput = (props: InputProps) => {
         ...props.inputOptions,
       }}
     >
-      <Pressable onPress={handlePress} style={styles.passwordBtn}>
+      <Pressable
+        onPress={handlePress}
+        style={{
+          marginLeft: 8,
+        }}
+      >
         <Feather name={isHidden ? "eye" : "eye-off"} size={16} />
       </Pressable>
+    </Input>
+  )
+}
+
+export const SearchInput = (props: InputProps) => {
+  return (
+    <Input
+      {...props}
+      containerStyle={{
+        flexDirection: "row-reverse",
+      }}
+    >
+      <Feather
+        name="search"
+        size={16}
+        style={{ marginRight: 8, color: Colors.gray }}
+      />
     </Input>
   )
 }
@@ -109,9 +131,5 @@ const styles = StyleSheet.create({
 
   input: {
     flex: 1,
-  },
-
-  passwordBtn: {
-    marginLeft: 8,
   },
 })
