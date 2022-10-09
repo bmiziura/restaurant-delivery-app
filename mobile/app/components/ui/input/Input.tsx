@@ -18,6 +18,8 @@ interface InputProps {
   label?: string
   labelStyle?: TextStyle | TextStyle[] | any[]
 
+  style?: ViewStyle | ViewStyle[] | any[]
+
   containerStyle?: ViewStyle | ViewStyle[] | any[]
 
   inputOptions?: TextInputProps
@@ -28,6 +30,7 @@ interface InputProps {
 const Input = ({
   label,
   labelStyle,
+  style,
   containerStyle,
   inputOptions,
   children,
@@ -41,7 +44,7 @@ const Input = ({
   }
 
   return (
-    <View>
+    <View style={style}>
       {label && (
         <Text style={[styles.label, labelStyle]} onPress={focusInput}>
           {label}

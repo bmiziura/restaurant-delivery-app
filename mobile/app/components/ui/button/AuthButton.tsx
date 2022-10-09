@@ -10,7 +10,6 @@ import Button, {
 
 import GoogleIcon from "@/assets/icons/google.svg"
 import LinkedinIcon from "@/assets/icons/linkedin.svg"
-import Colors from "@/theme/Colors"
 
 type AuthButtonProps = ButtonProps & {
   icon?: ReactElement
@@ -78,7 +77,6 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    color: Colors.primary,
     marginRight: "auto",
     marginLeft: "auto",
   },

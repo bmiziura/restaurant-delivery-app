@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   container: {
     width: "100%",
 
-    padding: 8,
+    paddingVertical: 12,
 
     paddingHorizontal: 16,
 
@@ -99,10 +99,10 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
 
     borderWidth: 1,
-    borderColor: Colors.accent,
+    borderColor: Colors.primary,
   },
 
   invertedText: {
-    color: Colors.accent,
+    color: Colors.primary,
   },
 })
