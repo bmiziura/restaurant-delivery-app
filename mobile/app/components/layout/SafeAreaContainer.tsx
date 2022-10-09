@@ -1,22 +1,26 @@
-import React, { ReactNode } from "react"
-import { View } from "react-native"
+import React from "react"
+import { StyleSheet, View } from "react-native"
 
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 import { Colors } from "react-native/Libraries/NewAppScreen"
+import { ContainerProps } from "./Container"
 
-const SafeAreaContainer = ({ children }: { children: ReactNode }) => {
+type SafeAreaContainerProps = ContainerProps
+
+const SafeAreaContainer = ({ style, children }: SafeAreaContainerProps) => {
   const { top, right, bottom, left } = useSafeAreaInsets()
   return (
     <View
-      style={{
-        flex: 1,
-        marginTop: top,
-        marginRight: right,
-        marginBottom: bottom,
-        marginLeft: left,
-
-        backgroundColor: Colors.white,
-      }}
+      style={[
+        {
+          marginTop: top,
+          marginRight: right,
+          marginBottom: bottom,
+          marginLeft: left,
+        },
+        styles.container,
+        style,
+      ]}
     >
       {children}
     </View>
@@ -24,3 +28,11 @@ const SafeAreaContainer = ({ children }: { children: ReactNode }) => {
 }
 
 export default SafeAreaContainer
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+
+    backgroundColor: Colors.white,
+  },
+})
