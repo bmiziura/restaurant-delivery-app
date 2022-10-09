@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import { StyleSheet, Text, TouchableOpacity } from "react-native"
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
 
 import SafeAreaContainer from "@/components/layout/SafeAreaContainer"
 import {
@@ -22,6 +22,8 @@ import {
 import { useAuth } from "@/contexts/AuthContext"
 import * as Google from "expo-auth-session/providers/google"
 import { GoogleAuthProvider } from "firebase/auth/react-native"
+
+import JobHuntImage from "@/assets/undraw/job_hunt.svg"
 
 type Props = NativeStackScreenProps<AuthStackParamList, "Login">
 
@@ -84,31 +86,37 @@ const LoginScreen = ({ route, navigation }: Props) => {
         </TouchableOpacity>
       </TopNavigationBar>
 
-      <Container>
-        <Text style={{ fontSize: 24, fontWeight: "bold" }}>
-          Sign In to get more chance in landing your favourite job!
-        </Text>
-        <Text>Sign in to access more features!</Text>
+      <Container style={{ flex: 1 }}>
+        <JobHuntImage width="100%" height="100%" />
       </Container>
 
-      <Container style={{ marginTop: 24 }}>
-        <GoogleAuthButton
-          touchableOptions={{
-            onPress: logInWithGoogle,
-          }}
-        />
+      <View style={{ flex: 1.5 }}>
+        <Container>
+          <Text style={{ fontSize: 24, fontWeight: "bold" }}>
+            Sign In to get more chance in landing your favourite job!
+          </Text>
+          <Text>Sign in to access more features!</Text>
+        </Container>
 
-        <TextLine style={{ marginTop: 16 }}>or</TextLine>
+        <Container style={{ marginTop: 24 }}>
+          <GoogleAuthButton
+            touchableOptions={{
+              onPress: logInWithGoogle,
+            }}
+          />
 
-        <InvertedAuthButton
-          text="Continue with Email"
-          icon={<Feather name="mail" size={20} />}
-          containerStyle={{ marginTop: 16 }}
-          touchableOptions={{
-            onPress: openLoginForm,
-          }}
-        />
-      </Container>
+          <TextLine style={{ marginTop: 16 }}>or</TextLine>
+
+          <InvertedAuthButton
+            text="Continue with Email"
+            icon={<Feather name="mail" size={20} />}
+            containerStyle={{ marginTop: 16 }}
+            touchableOptions={{
+              onPress: openLoginForm,
+            }}
+          />
+        </Container>
+      </View>
     </SafeAreaContainer>
   )
 }
