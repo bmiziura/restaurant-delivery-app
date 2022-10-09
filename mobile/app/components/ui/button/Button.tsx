@@ -5,6 +5,7 @@ import {
   Text,
   TextStyle,
   TouchableOpacity,
+  TouchableOpacityProps,
   ViewStyle,
 } from "react-native"
 
@@ -14,6 +15,8 @@ export interface ButtonProps {
   containerStyle?: ViewStyle | TextStyle[] | any[]
   textStyle?: TextStyle | TextStyle[] | any[]
 
+  touchableOptions?: TouchableOpacityProps
+
   children?: ReactNode
 }
 
@@ -21,10 +24,14 @@ const Button = ({
   text = "",
   containerStyle,
   textStyle,
+  touchableOptions,
   children,
 }: ButtonProps) => {
   return (
-    <TouchableOpacity style={[styles.container, containerStyle]}>
+    <TouchableOpacity
+      {...touchableOptions}
+      style={[styles.container, containerStyle]}
+    >
       {children ?? <ButtonText style={textStyle}>{text}</ButtonText>}
     </TouchableOpacity>
   )
