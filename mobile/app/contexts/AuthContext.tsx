@@ -1,18 +1,23 @@
+import React, { ReactNode, useContext, useEffect, useState } from "react"
+import { auth } from "../firebase"
+
+import * as WebBrowser from "expo-web-browser"
 import {
+  AuthCredential,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
+  signInWithCredential as logInWithCredential,
   signInWithEmailAndPassword,
   signOut as logOut,
   User,
   UserCredential,
-} from "firebase/auth"
+} from "firebase/auth/react-native"
 
-import React, { ReactNode, useContext, useEffect, useState } from "react"
-import { auth } from "../firebase"
+WebBrowser.maybeCompleteAuthSession()
 
 export interface AuthContextParams {
   signIn: (email: string, password: string) => Promise<UserCredential>
-  // signInWithGoogle: () => Promise<UserCredential>
+  signInWithCredential: (credentials: AuthCredential) => Promise<UserCredential>
   createUser: (email: string, password: string) => Promise<UserCredential>
   signOut: () => Promise<void>
   user: User | null
@@ -35,11 +40,9 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     return signInWithEmailAndPassword(auth, email, password)
   }
 
-  //   const signInWithGoogle = () => {
-  //     const provider = new GoogleAuthProvider()
-
-  //     return signInWithPopup(auth, provider)
-  //   }
+  const signInWithCredential = (credential: AuthCredential) => {
+    return logInWithCredential(auth, credential)
+  }
 
   const createUser = (email: string, password: string) => {
     return createUserWithEmailAndPassword(auth, email, password)
@@ -61,7 +64,7 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 
   const value: AuthContextParams = {
     signIn,
-    // signInWithGoogle,
+    signInWithCredential,
     createUser,
     signOut,
     user,

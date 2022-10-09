@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { StyleSheet, Text, TouchableOpacity } from "react-native"
 
 import SafeAreaContainer from "@/components/layout/SafeAreaContainer"
@@ -19,9 +19,20 @@ import {
   NativeStackScreenProps,
 } from "@react-navigation/native-stack"
 
+import { useAuth } from "@/contexts/AuthContext"
+import * as Google from "expo-auth-session/providers/google"
+import { GoogleAuthProvider } from "firebase/auth/react-native"
+
 type Props = NativeStackScreenProps<AuthStackParamList, "Login">
 
 const LoginScreen = ({ route, navigation }: Props) => {
+  const { signInWithCredential } = useAuth()
+
+  const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
+    clientId:
+      "592110194825-nn3q1unr3h1b9uvki2lg8f30amnihjk5.apps.googleusercontent.com",
+  })
+
   const openLoginForm = () => {
     navigation.navigate("LoginModal")
   }
@@ -33,6 +44,36 @@ const LoginScreen = ({ route, navigation }: Props) => {
     rootNavigation.navigate("HomeStack", {
       screen: "Home",
     })
+  }
+
+  useEffect(() => {
+    const checkResponse = async () => {
+      if (response?.type === "success") {
+        const { id_token } = response.params
+        const credential = GoogleAuthProvider.credential(id_token)
+
+        try {
+          await signInWithCredential(credential)
+
+          rootNavigation.reset({
+            index: 0,
+            routes: [
+              {
+                name: "HomeStack",
+              },
+            ],
+          })
+        } catch (err: any) {}
+      }
+    }
+
+    checkResponse()
+  }, [response])
+
+  const logInWithGoogle = async () => {
+    if (!request) return
+
+    await promptAsync()
   }
 
   return (
@@ -51,7 +92,11 @@ const LoginScreen = ({ route, navigation }: Props) => {
       </Container>
 
       <Container style={{ marginTop: 24 }}>
-        <GoogleAuthButton />
+        <GoogleAuthButton
+          touchableOptions={{
+            onPress: logInWithGoogle,
+          }}
+        />
 
         <TextLine style={{ marginTop: 16 }}>or</TextLine>
 
