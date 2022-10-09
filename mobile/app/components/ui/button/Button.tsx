@@ -52,6 +52,18 @@ export const InvertedButton = (props: ButtonProps) => {
   )
 }
 
+export const InvertedButtonText = ({
+  style,
+  children,
+}: {
+  style?: TextStyle | TextStyle[] | any[]
+  children: ReactNode
+}) => {
+  return (
+    <Text style={[styles.text, styles.invertedText, style]}>{children}</Text>
+  )
+}
+
 export default Button
 
 const styles = StyleSheet.create({
@@ -68,13 +80,11 @@ const styles = StyleSheet.create({
 
     backgroundColor: Colors.accent,
 
-    borderRadius: 7,
+    borderRadius: 100,
   },
 
   text: {
     color: Colors.white,
-
-    fontWeight: "bold",
   },
 
   // Inverted Button
