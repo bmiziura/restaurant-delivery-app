@@ -12,7 +12,7 @@ import { auth } from "../firebase"
 
 export interface AuthContextParams {
   signIn: (email: string, password: string) => Promise<UserCredential>
-  //   signInWithGoogle: () => Promise<UserCredential>
+  // signInWithGoogle: () => Promise<UserCredential>
   createUser: (email: string, password: string) => Promise<UserCredential>
   signOut: () => Promise<void>
   user: User | null
