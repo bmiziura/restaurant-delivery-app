@@ -5,7 +5,6 @@ import SafeAreaContainer from "@/components/layout/SafeAreaContainer"
 import {
   GoogleAuthButton,
   InvertedAuthButton,
-  LinkedinAuthButton,
 } from "@/components/ui/button/AuthButton"
 
 import Container from "@/components/layout/Container"
@@ -53,7 +52,6 @@ const LoginScreen = ({ route, navigation }: Props) => {
 
       <Container style={{ marginTop: 24 }}>
         <GoogleAuthButton />
-        <LinkedinAuthButton containerStyle={{ marginTop: 8 }} />
 
         <TextLine style={{ marginTop: 16 }}>or</TextLine>
 
