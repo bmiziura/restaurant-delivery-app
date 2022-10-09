@@ -1,5 +1,5 @@
 import Colors from "@/theme/Colors"
-import React, { ReactElement } from "react"
+import React, { ReactNode } from "react"
 import {
   StyleSheet,
   Text,
@@ -8,25 +8,36 @@ import {
   ViewStyle,
 } from "react-native"
 
-type ButtonProps = {
+export interface ButtonProps {
   text?: string
-  icon?: ReactElement
 
   containerStyle?: ViewStyle | TextStyle[] | any[]
   textStyle?: TextStyle | TextStyle[] | any[]
+
+  children?: ReactNode
 }
 
 const Button = ({
   text = "",
-  icon,
   containerStyle,
   textStyle,
+  children,
 }: ButtonProps) => {
   return (
     <TouchableOpacity style={[styles.container, containerStyle]}>
-      <Text style={[styles.text, textStyle]}>{text}</Text>
+      {children ?? <ButtonText style={textStyle}>{text}</ButtonText>}
     </TouchableOpacity>
   )
+}
+
+export const ButtonText = ({
+  style,
+  children,
+}: {
+  style?: TextStyle | TextStyle[] | any[]
+  children: ReactNode
+}) => {
+  return <Text style={[styles.text, style]}>{children}</Text>
 }
 
 export const InvertedButton = (props: ButtonProps) => {
@@ -49,6 +60,8 @@ const styles = StyleSheet.create({
     width: "100%",
 
     padding: 8,
+
+    paddingHorizontal: 16,
 
     justifyContent: "center",
     alignItems: "center",
