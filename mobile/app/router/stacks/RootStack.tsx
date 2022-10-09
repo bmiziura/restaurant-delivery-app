@@ -1,3 +1,4 @@
+import { useAuth } from "@/contexts/AuthContext"
 import { NavigatorScreenParams } from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 
@@ -13,9 +14,11 @@ export type RootStackParamList = {
 const RootStack = createNativeStackNavigator<RootStackParamList>()
 
 const RootStackNavigator = () => {
+  const { user } = useAuth()
+
   return (
     <RootStack.Navigator
-      initialRouteName="AuthStack"
+      initialRouteName={user ? "HomeStack" : "AuthStack"}
       screenOptions={{
         headerShown: false,
       }}
