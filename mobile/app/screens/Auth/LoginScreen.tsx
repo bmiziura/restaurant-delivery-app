@@ -1,5 +1,5 @@
 import React from "react"
-import { StyleSheet, Text } from "react-native"
+import { StyleSheet, Text, TouchableOpacity } from "react-native"
 
 import SafeAreaContainer from "@/components/layout/SafeAreaContainer"
 import {
@@ -12,8 +12,13 @@ import Container from "@/components/layout/Container"
 import TopNavigationBar from "@/components/ui/navigation/TopNavigationBar"
 import TextLine from "@/components/ui/textline/TextLine"
 import { AuthStackParamList } from "@/router/stacks/Auth/AuthStack"
+import { RootStackParamList } from "@/router/stacks/RootStack"
 import Feather from "@expo/vector-icons/Feather"
-import { NativeStackScreenProps } from "@react-navigation/native-stack"
+import { useNavigation } from "@react-navigation/native"
+import {
+  NativeStackNavigationProp,
+  NativeStackScreenProps,
+} from "@react-navigation/native-stack"
 
 type Props = NativeStackScreenProps<AuthStackParamList, "Login">
 
@@ -22,10 +27,21 @@ const LoginScreen = ({ route, navigation }: Props) => {
     navigation.navigate("LoginModal")
   }
 
+  const rootNavigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>()
+
+  const skipLogin = () => {
+    rootNavigation.navigate("HomeStack", {
+      screen: "Home",
+    })
+  }
+
   return (
     <SafeAreaContainer>
       <TopNavigationBar>
-        <Text style={styles.skipButton}>Skip</Text>
+        <TouchableOpacity style={styles.skipButton} onPress={skipLogin}>
+          <Text style={styles.skipButtonText}>Skip</Text>
+        </TouchableOpacity>
       </TopNavigationBar>
 
       <Container>
@@ -59,6 +75,10 @@ export default LoginScreen
 const styles = StyleSheet.create({
   skipButton: {
     marginLeft: "auto",
+  },
+
+  skipButtonText: {
+    textDecorationLine: "underline",
   },
 
   container: {
