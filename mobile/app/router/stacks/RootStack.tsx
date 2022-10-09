@@ -7,7 +7,7 @@ import HomeStack, { HomeStackParamList } from "./Home/HomeStack"
 export type RootStackParamList = {
   AuthStack: NavigatorScreenParams<AuthStackParamList>
   HomeStack: NavigatorScreenParams<HomeStackParamList>
-  RestaurantPanelStack: undefined
+  CompanyStack: undefined
 }
 
 const RootStack = createNativeStackNavigator<RootStackParamList>()
