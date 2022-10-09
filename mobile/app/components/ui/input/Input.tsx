@@ -74,6 +74,7 @@ export const PasswordInput = (props: InputProps) => {
       inputOptions={{
         secureTextEntry: isHidden,
         textContentType: "password",
+        placeholder: "Password",
         ...props.inputOptions,
       }}
     >
