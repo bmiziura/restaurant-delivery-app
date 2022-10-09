@@ -29,7 +29,9 @@ const LoginScreen = ({ route, navigation }: Props) => {
       </TopNavigationBar>
 
       <Container>
-        <Text style={{ fontSize: 24, fontWeight: "bold" }}>Sign In</Text>
+        <Text style={{ fontSize: 24, fontWeight: "bold" }}>
+          Sign In to get more chance in landing your favourite job!
+        </Text>
         <Text>Sign in to access more features!</Text>
       </Container>
 
