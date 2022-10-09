@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 
-import AuthStack, { AuthStackParamList } from "./Auth/HomeStack"
+import AuthStack, { AuthStackParamList } from "./Auth/AuthStack"
 import HomeStack, { HomeStackParamList } from "./Home/HomeStack"
 
 export type RootStackParamList = {

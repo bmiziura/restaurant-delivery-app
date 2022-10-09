@@ -1,15 +1,19 @@
 import React from "react"
-import { StyleSheet, Text } from "react-native"
+import { StyleSheet, Text, View } from "react-native"
 
-import Button from "@/components/button/Button"
 import SafeAreaContainer from "@/components/layout/SafeAreaContainer"
+import AuthButton from "@/components/ui/button/AuthButton"
 
 const LoginScreen = () => {
   return (
     <SafeAreaContainer>
-      <Text>LoginScreen</Text>
+      <View>
+        <Text>Skip</Text>
+      </View>
 
-      <Button />
+      <View>
+        <AuthButton text="Continue with Google" icon={<Text>G</Text>} />
+      </View>
     </SafeAreaContainer>
   )
 }
