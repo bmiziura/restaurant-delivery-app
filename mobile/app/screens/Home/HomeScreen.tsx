@@ -1,12 +1,15 @@
+import Container from "@/components/layout/Container"
+import SafeAreaContainer from "@/components/layout/SafeAreaContainer"
+import { SearchInput } from "@/components/ui/input/Input"
 import React from "react"
-
-import { Text, View } from "react-native"
 
 const HomeScreen = () => {
   return (
-    <View>
-      <Text>HomeScreen</Text>
-    </View>
+    <SafeAreaContainer>
+      <Container>
+        <SearchInput />
+      </Container>
+    </SafeAreaContainer>
   )
 }
 
