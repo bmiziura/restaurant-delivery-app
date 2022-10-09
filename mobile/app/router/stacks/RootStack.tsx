@@ -1,11 +1,12 @@
+import { NavigatorScreenParams } from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 
 import AuthStack, { AuthStackParamList } from "./Auth/AuthStack"
 import HomeStack, { HomeStackParamList } from "./Home/HomeStack"
 
 export type RootStackParamList = {
-  AuthStack: AuthStackParamList
-  HomeStack: HomeStackParamList
+  AuthStack: NavigatorScreenParams<AuthStackParamList>
+  HomeStack: NavigatorScreenParams<HomeStackParamList>
   RestaurantPanelStack: undefined
 }
 
