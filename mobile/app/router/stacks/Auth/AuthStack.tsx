@@ -25,7 +25,9 @@ const AuthStackNavigator = () => {
         <AuthStack.Screen name="Login" component={LoginScreen} />
       </AuthStack.Group>
 
-      <AuthStack.Group screenOptions={{ presentation: "modal" }}>
+      <AuthStack.Group
+        screenOptions={{ presentation: "modal", animation: "slide_from_right" }}
+      >
         <AuthStack.Screen name="LoginModal" component={LoginModalScreen} />
         <AuthStack.Screen
           name="RegisterModal"
