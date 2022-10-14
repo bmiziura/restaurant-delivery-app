@@ -41,7 +41,7 @@ const RegisterModalScreen = () => {
         index: 0,
         routes: [
           {
-            name: "HomeStack",
+            name: "MainStack",
           },
         ],
       })

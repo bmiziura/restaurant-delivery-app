@@ -3,11 +3,11 @@ import { NavigatorScreenParams } from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 
 import AuthStack, { AuthStackParamList } from "./Auth/AuthStack"
-import HomeStack, { HomeStackParamList } from "./Home/HomeStack"
+import MainStack, { MainStackParamList } from "./Main/MainStack"
 
 export type RootStackParamList = {
   AuthStack: NavigatorScreenParams<AuthStackParamList>
-  HomeStack: NavigatorScreenParams<HomeStackParamList>
+  MainStack: NavigatorScreenParams<MainStackParamList>
   CompanyStack: undefined
 }
 
@@ -18,13 +18,13 @@ const RootStackNavigator = () => {
 
   return (
     <RootStack.Navigator
-      initialRouteName={user ? "HomeStack" : "AuthStack"}
+      initialRouteName={user ? "MainStack" : "AuthStack"}
       screenOptions={{
         headerShown: false,
       }}
     >
       <RootStack.Screen name="AuthStack" component={AuthStack} />
-      <RootStack.Screen name="HomeStack" component={HomeStack} />
+      <RootStack.Screen name="MainStack" component={MainStack} />
     </RootStack.Navigator>
   )
 }

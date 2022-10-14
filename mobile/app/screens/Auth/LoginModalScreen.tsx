@@ -9,7 +9,7 @@ import { RootStackParamList } from "@/router/stacks/RootStack"
 import { useNavigation } from "@react-navigation/native"
 import {
   NativeStackNavigationProp,
-  NativeStackScreenProps
+  NativeStackScreenProps,
 } from "@react-navigation/native-stack"
 import React, { useState } from "react"
 import { StyleSheet, Text } from "react-native"
@@ -46,7 +46,7 @@ const LoginModalScreen = ({ route, navigation }: Props) => {
         index: 0,
         routes: [
           {
-            name: "HomeStack",
+            name: "MainStack",
           },
         ],
       })

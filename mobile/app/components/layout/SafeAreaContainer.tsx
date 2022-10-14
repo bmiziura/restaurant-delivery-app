@@ -10,19 +10,22 @@ type SafeAreaContainerProps = ContainerProps
 const SafeAreaContainer = ({ style, children }: SafeAreaContainerProps) => {
   const { top, right, bottom, left } = useSafeAreaInsets()
   return (
-    <View
-      style={[
-        {
-          marginTop: top,
-          marginRight: right,
-          marginBottom: bottom,
-          marginLeft: left,
-        },
-        styles.container,
-        style,
-      ]}
-    >
-      {children}
+    <View style={[styles.container, style]}>
+      <View
+        style={[
+          {
+            marginTop: top,
+            marginRight: right,
+            marginBottom: bottom,
+            marginLeft: left,
+          },
+          {
+            flex: 1,
+          },
+        ]}
+      >
+        {children}
+      </View>
     </View>
   )
 }
